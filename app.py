@@ -1,4 +1,9 @@
 from flask import Flask, render_template
+from pymongo import MongoClient
+
+client = MongoClient()
+db = client.Playlister
+playlists = db.playlists
 
 app = Flask(__name__)
 
@@ -8,10 +13,11 @@ app = Flask(__name__)
 #     return render_template('home.html', msg='Flask is Cool!!')
 
 # OUR MOCK ARRAY OF PROJECTS
-playlists = [
-    { 'title': 'Cat Videos', 'description': 'Cats acting weird' },
-    { 'title': '80\'s Music', 'description': 'Don\'t stop believing!' }
-]
+# playlists = [
+#     { 'title': 'Cat Videos', 'description': 'Cats acting weird' },
+#     { 'title': '80\'s Music', 'description': 'Don\'t stop believing!' }
+#     {'title': 'Sam Frank', 'description': 'He was the coolest kid in the bank'}
+# ]
 
 @app.route('/')
 def playlists_index():
