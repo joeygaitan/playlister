@@ -44,14 +44,18 @@ def playlists_index():
 #     playlists.insert_one(playlist)
 #     return redirect(url_for('playlists_index'))
 
+@app.route('/playlists/new')
+def playlists_new():
+    """Create a new playlist."""
+    return render_template('playlists_new.html', playlist={}, title='New Playlist')
+
 @app.route('/playlists', methods=['POST'])
 def playlists_submit():
     """Submit a new playlist."""
     playlist = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'videos': request.form.get('videos').split(),
-        'video': request.form.get('star_rating')
+        'videos': request.form.get('videos').split()
     }
     playlist_id = playlists.insert_one(playlist).inserted_id
     return redirect(url_for('playlists_show', playlist_id=playlist_id))
@@ -74,8 +78,7 @@ def playlists_update(playlist_id):
     updated_playlist = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'videos': request.form.get('videos').split(),
-        'video': request.form.get('star_rating')
+        'videos': request.form.get('videos').split()
     }
     playlists.update_one(
         {'_id': ObjectId(playlist_id)},
