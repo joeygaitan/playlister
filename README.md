@@ -1,3 +1,5 @@
+heroku application: https://playlister-j-g.herokuapp.com
+
 ## User Stories
 
 1. Users can view all playlists (index)
