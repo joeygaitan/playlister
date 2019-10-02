@@ -11,7 +11,7 @@ heroku application: https://playlister-j-g.herokuapp.com
 7. Users can delete comments on playlists (comments#destroy)
 
 To Run This code please type this into your command line or terminal
-'''
+```
 pip3 install -r requirements.txt
-'''
+```
 
